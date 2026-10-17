@@ -1,0 +1,10 @@
+{
+  "gtaPath": "D:\\Gta Base Rp",
+  "servers": [
+    {
+      "name": "Base RP",
+      "ip": "127.0.0.1",
+      "port": 7777
+    }
+  ]
+}

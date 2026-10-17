@@ -1,0 +1,250 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: #1e1e1e;
+  color: white;
+  text-align: center;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
+.user-panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+.username-display {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  min-width: 80px;
+  text-align: left;
+}
+
+.username-input {
+  width: 140px;
+  height: 32px;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  padding: 0 10px;
+}
+
+.username-input.hidden {
+  display: none;
+}
+
+.sbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 15px;
+  margin: 0 auto;
+  min-height: 65vh;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.card {
+  background: #2c2c2c;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-box {
+  width: 100%;
+}
+
+.card-box h2,
+.card-box p,
+.card-box button {
+  margin: 0;
+}
+
+.card-box h2 {
+  margin-bottom: 10px;
+}
+
+.card-box p {
+  margin-bottom: 12px;
+}
+
+.spinner {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 64px;
+  height: 64px;
+  border: 6px solid rgba(255, 255, 255, 0.18);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  z-index: 2100;
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2000;
+  pointer-events: all;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-button,
+.server-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, #3a3a3a 0%, #282828 100%);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.settings-button {
+  margin: 16px 20px 16px auto;
+}
+
+.reload-button {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 10;
+}
+
+.reload-button.is-loading svg {
+  animation: spin 0.8s linear infinite;
+}
+
+.server-button {
+  min-width: 140px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(180deg, #1fbf75 0%, #14915a 100%);
+  border-color: rgba(99, 255, 178, 0.35);
+}
+
+.server-button.is-exit {
+  background: linear-gradient(180deg, #ed5353 0%, #bd3038 100%);
+  border-color: rgba(255, 130, 130, 0.45);
+}
+
+.icon-button:hover,
+.server-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.icon-button:active,
+.server-button:active {
+  transform: translateY(0);
+  filter: brightness(0.98);
+}
+
+.alert-container {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  width: min(90vw, 500px);
+}
+
+.custom-alert {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  border: 1px solid transparent;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(-10px) scale(0.98);
+  animation: alertIn 0.2s ease forwards;
+}
+
+@keyframes alertIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes alertOut {
+  to {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+}
+
+.custom-alert-success {
+  background: rgba(31, 191, 117, 0.15);
+  border-color: rgba(31, 191, 117, 0.45);
+  color: #dfffea;
+}
+
+.custom-alert-danger {
+  background: rgba(220, 53, 69, 0.15);
+  border-color: rgba(220, 53, 69, 0.45);
+  color: #ffe1e5;
+}
+
+.custom-alert-warning {
+  background: rgba(255, 193, 7, 0.12);
+  border-color: rgba(255, 193, 7, 0.45);
+  color: #fff4d1;
+}
